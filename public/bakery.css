@@ -1,0 +1,111 @@
+@font-face {
+  font-family: "hey_august";
+  src: url("Hey\ August.ttf");
+}
+@font-face {
+  font-family: "alte_schwabacher";
+  src: url("AlteSchwabacher.ttf");
+}
+
+* {
+  margin: unset;
+  padding: unset;
+}
+
+body {
+  background-color: #f2b13d;
+  background-image: url("./Sourdough.jpeg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  position: relative;
+}
+
+/* branding */
+
+.pretzel-logo {
+  /* height: 80px; */
+  max-width: 200px;
+}
+
+.logo-title {
+  text-align: center;
+}
+
+.branding {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+}
+.black-title {
+  color: black;
+  font-family: hey_august;
+  font-size: 50px;
+}
+.red-title {
+  color: #eb4025;
+  font-family: hey_august;
+  font-size: 50px;
+  text-shadow: 1px 1px 1px black;
+}
+.yellow-title {
+  color: #f9db57;
+  font-family: hey_august;
+  font-size: 70px;
+}
+
+/* main content */
+
+.column {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+}
+
+.center-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+}
+
+.rounded-container {
+  background-color: white;
+  font-family: alte_schwabacher;
+  font-size: 40px;
+  border-radius: 8px;
+  padding: 1rem;
+  width: 300px;
+  box-shadow: 4px 4px;
+  text-align: center;
+}
+
+.center-row {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: center; */
+  align-items: center;
+  flex: 1 2 1;
+  /* height: 95vh; */
+  gap: 20px;
+}
+
+.arrow {
+  max-height: 50px;
+}
+
+.reverse {
+  transform: rotate(180deg);
+}
+
+.vertical-spacing {
+  height: 20px;
+}
+/* bottom */
+
+.address {
+  position: fixed;
+  color: white;
+  bottom: 10px;
+  left: 10px;
+}
