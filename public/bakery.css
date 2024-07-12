@@ -31,30 +31,67 @@ body {
   text-align: center;
 }
 
+@media screen and (max-width: 800px) {
+  .logo-title {
+    visibility: hidden;
+  }
+  
+}
+
+@media screen and (max-width: 800px) {
+  .branding {
+    /* visibility: hidden; */
+    flex-direction: column;
+    position: relative;
+    padding-bottom: 30px;
+  }
+  .pretzel-logo {
+    max-width: 100px;
+  }
+  .black-title {
+    font-size: 35px;
+  }
+  .red-title {
+    font-size: 35px;
+  }
+  .yellow-title {
+    font-size: 40px;
+  }
+}
+@media screen and (min-width: 800px) {
+  .branding {
+    position: absolute;
+    flex-direction: column;
+  }
+  .black-title {
+    font-size: 50px;
+  }
+  .red-title {
+    font-size: 50px;
+  }
+  .yellow-title {
+    font-size: 70px;
+  }
+}
 .branding {
-  position: absolute;
   left: 20px;
   top: 20px;
   text-align: center;
   display: flex;
-  flex-direction: column;
   align-items: center;
 }
 .black-title {
   color: black;
   font-family: hey_august;
-  font-size: 50px;
 }
 .red-title {
   color: #eb4025;
   font-family: hey_august;
-  font-size: 50px;
   text-shadow: 1px 1px 1px black;
 }
 .yellow-title {
   color: #f9db57;
   font-family: hey_august;
-  font-size: 70px;
 }
 
 /* main content */
@@ -101,9 +138,21 @@ body {
   transform: rotate(180deg);
 }
 
-.vertical-spacing {
-  height: 20px;
+@media screen and (min-width: 800px) {
+  .vertical-spacing {
+    height: 20px;
+  }
+  .tall-vertical-spacing {
+    height: 40vh;
+  } 
 }
+@media screen and (max-width: 800px) {
+  .tall-vertical-spacing {
+    height: 5vh;
+  } 
+}
+
+
 /* bottom */
 
 .address {
