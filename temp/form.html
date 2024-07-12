@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+    <link rel="stylesheet" href="form.css" />
+  </head>
+  <body>
+    <form class="login-form" action="javascript:void(0);">
+      <h1>Order form</h1>
+
+      <label for="name">
+        <span>Name</span>
+        <input type="text" name="name" id="name" placeholder=" " autocomplete="off" class="form-control-material" required
+      /></label>
+
+      <label for="date"
+        ><span>Pickup Date</span>
+        <input type="date" name="date" id="pickup_date" placeholder=" " autocomplete="off" class="form-control-material" required />
+      </label>
+
+      <label for="email"
+        ><span>Email</span>
+        <input
+          type="email"
+          name="email"
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+          id="email"
+          placeholder=" "
+          autocomplete="off"
+          class="form-control-material"
+          required
+        />
+      </label>
+
+      <label for="sourdough"
+        >Artisan sourdough ($8):
+        <select name="sourdough" id="sourdough_select">
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+      </label>
+      <label for="pretzels"
+        >Soft pretzels ($3):
+        <select name="pretzels" id="pretzels_select">
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="15">15</option>
+          <option value="16">16</option>
+          <option value="17">17</option>
+          <option value="18">18</option>
+          <option value="19">19</option>
+          <option value="20">20</option>
+        </select>
+      </label>
+      <label for="hefezopf"
+      >Braided brioche (Hefezopf) ($7):
+      <select name="hefezopf" id="hefezopf_select">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+      </select>
+    </label>
+
+      <button type="submit" class="btn btn-primary btn-ghost">Place Order</button>
+    </form>
+    <script>
+      const date = document.getElementById("pickup_date");
+      const today = new Date().toISOString().split("T")[0];
+      date.value = today;
+      date.min = today;
+    </script>
+  </body>
+</html>
