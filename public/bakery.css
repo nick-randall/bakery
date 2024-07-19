@@ -143,7 +143,7 @@ body {
     height: 20px;
   }
   .tall-vertical-spacing {
-    height: 40vh;
+    height: 10vh;
   } 
 }
 @media screen and (max-width: 800px) {
@@ -155,9 +155,17 @@ body {
 
 /* bottom */
 
-.address {
+.bottom-section {
   position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
   color: white;
   bottom: 10px;
   left: 10px;
+}
+
+.instagram-logo{
+  max-width: 50px;
 }
