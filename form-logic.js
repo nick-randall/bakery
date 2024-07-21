@@ -6,7 +6,7 @@ if (date != null) {
 }
 
 const recordVisit = () =>
-  fetch("https://nick-codes/add-visit", {
+  fetch("https://resume-backend.fly.dev/add-visit", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
