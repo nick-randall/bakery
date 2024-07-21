@@ -13,6 +13,8 @@ const addOptions = (select, min, max) => {
   }
 };
 
+
+
 const sourdoughPrice = 8;
 const pretzelsPrice = 3;
 const hefezopfPrice = 7;
@@ -26,6 +28,7 @@ const onSubmit = async () => {
   const sourdough = document.getElementById("sourdough_select").value;
   const pretzels = document.getElementById("pretzels_select").value;
   const hefezopf = document.getElementById("hefezopf_select").value;
+  
 
   const response = await fetch("/api/order", {
     method: "POST",
@@ -71,3 +74,15 @@ sourdough.addEventListener("change", onSelect);
 pretzels.addEventListener("change", onSelect);
 hefezopf.addEventListener("change", onSelect);
 const totalPriceEl = document.getElementById("total-price");
+
+const overlay = document.getElementById("overlay");
+
+const preOrderButton = document.getElementById("pre-order-button");
+preOrderButton.addEventListener("click", () => {
+  overlay.classList.remove("hidden");
+});
+
+const closeButton = document.getElementById("close-button");
+closeButton.addEventListener("click", () => {
+  overlay.classList.add("hidden");
+});

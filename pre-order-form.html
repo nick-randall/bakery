@@ -8,7 +8,13 @@
   </head>
   <body>
     <form name="order-form" onsubmit="onSubmit(this)">
-      <h1>Pre-order form <span style="font-size: 20px;"> &lt;German Family Bakery&gt;</span></h1>
+      <div class="branding">
+        <img src="./public/pretzel_white.png" alt="pretzel logo" class="pretzel-logo" />
+        <div class="vertical-spacing"></div>
+        <div><span class="black-title">German </span><span class="red-title">Family</span></div>
+        <span class="yellow-title"> Bakery</span>
+      </div>
+      <h1>Pre-order form <span style="font-size: 20px"> &lt;German Family Bakery&gt;</span></h1>
       <h3>Orders for grand opening on Sunday August 4th, 2024</h3>
       <label for="name">
         <span>Name</span>
@@ -17,16 +23,7 @@
 
       <label for="phone"
         ><span>Phone</span>
-        <input
-          type="text"
-          name="phone"
-          id="phone"
-          pattern="[0-9]+"
-          placeholder=" "
-          autocomplete="off"
-          class="form-control-material"
-          required
-        />
+        <input type="text" name="phone" id="phone" pattern="[0-9]+" placeholder=" " autocomplete="off" class="form-control-material" required />
       </label>
 
       <label for="sourdough"

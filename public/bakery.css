@@ -120,6 +120,10 @@ body {
   text-align: center;
 }
 
+.rounded-container.button{
+  cursor: pointer;
+}
+
 .center-row {
   display: flex;
   flex-direction: row;
