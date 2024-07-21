@@ -4,6 +4,20 @@ if (date != null) {
   date.value = today;
   date.min = today;
 }
+
+const recordVisit = () =>
+  fetch("https://nick-codes/add-visit", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      site: "bakery",
+    }),
+  }).then(response => console.log(response));
+
+recordVisit();
+
 const addOptions = (select, min, max) => {
   for (var i = min; i <= max; i++) {
     var opt = document.createElement("option");
@@ -12,8 +26,6 @@ const addOptions = (select, min, max) => {
     select.appendChild(opt);
   }
 };
-
-
 
 const sourdoughPrice = 8;
 const pretzelsPrice = 3;
@@ -28,30 +40,28 @@ const onSubmit = async () => {
   const sourdough = document.getElementById("sourdough_select").value;
   const pretzels = document.getElementById("pretzels_select").value;
   const hefezopf = document.getElementById("hefezopf_select").value;
-  
 
-  const response = await fetch("/api/order", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      name,
-      email,
-      pickupDate,
-      sourdough,
-      pretzels,
-      hefezopf,
-    }),
-  });
+  //   const response = await fetch("https://nick-codes", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       name,
+  //       email,
+  //       pickupDate,
+  //       sourdough,
+  //       pretzels,
+  //       hefezopf,
+  //     }),
+  //   });
 
-  if (response.ok) {
-    alert("Order placed successfully!");
-  } else {
-    alert("Failed to place order");
-  }
+  //   if (response.ok) {
+  //     alert("Order placed successfully!");
+  //   } else {
+  //     alert("Failed to place order");
+  //   }
 };
-const test = () => console.log("test");
 const form = document.getElementById("order-form");
 
 const sourdough = document.getElementById("sourdough_select");
