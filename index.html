@@ -33,17 +33,20 @@
       </div>
       <div class="vertical-spacing"></div>
     </div>
-    <div class="bottom-section"><a href="https://www.instagram.com/german.family.bakery/"><img src="./public/instagram.png" class="instagram-logo" /></a>56 Valley Drive, Caboolture / 0493 660 180</div>
+    <div class="bottom-section">
+      <a href="https://www.instagram.com/german.family.bakery/"><img src="./public/instagram.png" class="instagram-logo" /></a>56 Valley Drive,
+      Caboolture / 0493 660 180
+    </div>
     <div class="overlay hidden" id="overlay">
       <div class="form-stuff">
-        <img class="close-button" id="close-button" src="./public/close.svg"></img>
+        <img class="close-button" id="close-button" src="./public/close.svg" />
         <div class="form-branding">
           <img src="./public/pretzel_white.png" alt="pretzel logo" class="pretzel-logo" />
           <div class="vertical-spacing"></div>
           <div><span class="black-title">German </span><span class="red-title">Family</span></div>
           <span class="yellow-title"> Bakery</span>
         </div>
-        <form name="order-form" onsubmit="onSubmit(this)">
+        <form name="order-form" id="order-form">
           <h1>Pre-order form</h1>
           <h3>Orders for grand opening on Sunday August 4th, 2024</h3>
           <label for="name">
@@ -72,7 +75,12 @@
           <button type="submit" class="btn btn-primary btn-ghost">Place Order</button>
         </form>
       </div>
+      <div class="confirm-dialogue hidden" id="confirm-order">
+        <h3>Your order:</h1>
+        <p id="order-text"></p>
+        <div style="display: flex; gap: 10px;"><button id="ok-button" class="btn">OK</button><button id="cancel-button" class="btn">CANCEL</button></div>
+      </div>
+      <script src="./form-logic.js"></script>
     </div>
-    <script src="./form-logic.js"></script>
   </body>
 </html>
