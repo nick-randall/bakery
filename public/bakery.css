@@ -119,6 +119,7 @@ body {
 .rounded-container {
   background-color: white;
   font-family: alte_schwabacher;
+  line-height: 0.8;
   border-radius: 8px;
   padding: 1rem;
   width: 300px;
@@ -157,6 +158,7 @@ body {
   }
   .bottom-section {
     left: 10px;
+    flex-direction: column;
   }
 }
 @media screen and (max-width: 800px) {
@@ -166,6 +168,7 @@ body {
   .bottom-section {
     left: 50%;
     transform: translateX(-50%);
+    flex-direction: row;
   }
   .arrow {
     max-width: 30px;
@@ -177,7 +180,6 @@ body {
 .bottom-section {
   position: absolute;
   display: flex;
-  flex-direction: column;
   align-items: center;
   gap: 10px;
   color: white;
