@@ -48,8 +48,6 @@ const sourdoughPrice = 8;
 const pretzelsPrice = 3;
 const hefezopfPrice = 7;
 
-
-
 const onSubmit = e => {
   e.preventDefault();
   const name = document.getElementById("name").value;
@@ -99,7 +97,6 @@ const onSubmit = e => {
   cancelButton.addEventListener("click", () => {
     confirmDialogue.classList.add("hidden");
     overlay.classList.add("hidden");
-    alert("Order cancelled");
   });
 };
 
@@ -107,8 +104,7 @@ form.addEventListener("submit", onSubmit);
 
 const placeOrder = async ({ name, phone, items, pickupDate, pickupTime, totalPrice }) => {
   const response = await fetch("https://resume-backend.fly.dev/place-bakery-order", {
-  
-  method: "POST",
+    method: "POST",
     headers: {
       "Content-Type": "application/json",
     },

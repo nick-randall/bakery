@@ -19,6 +19,7 @@ body {
   background-attachment: fixed;
   background-size: cover;
   position: relative;
+  min-height: 100vh;
 }
 
 /* branding */
@@ -35,15 +36,16 @@ body {
   .logo-title {
     visibility: hidden;
   }
-  
 }
 
 @media screen and (max-width: 800px) {
   .branding {
     /* visibility: hidden; */
+    left: 20px;
     flex-direction: column;
     position: relative;
     padding-bottom: 30px;
+    max-width: 90%;
   }
   .pretzel-logo {
     max-width: 100px;
@@ -56,6 +58,9 @@ body {
   }
   .yellow-title {
     font-size: 40px;
+  }
+  .rounded-container {
+    font-size: 30px;
   }
 }
 @media screen and (min-width: 800px) {
@@ -72,9 +77,11 @@ body {
   .yellow-title {
     font-size: 70px;
   }
+  .rounded-container {
+    font-size: 40px;
+  }
 }
 .branding {
-  left: 20px;
   top: 20px;
   text-align: center;
   display: flex;
@@ -112,7 +119,6 @@ body {
 .rounded-container {
   background-color: white;
   font-family: alte_schwabacher;
-  font-size: 40px;
   border-radius: 8px;
   padding: 1rem;
   width: 300px;
@@ -120,7 +126,7 @@ body {
   text-align: center;
 }
 
-.rounded-container.button{
+.rounded-container.button {
   cursor: pointer;
 }
 
@@ -148,28 +154,37 @@ body {
   }
   .tall-vertical-spacing {
     height: 10vh;
-  } 
+  }
+  .bottom-section {
+    left: 10px;
+  }
 }
 @media screen and (max-width: 800px) {
   .tall-vertical-spacing {
     height: 5vh;
-  } 
+  }
+  .bottom-section {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .arrow {
+    max-width: 30px;
+  }
 }
-
 
 /* bottom */
 
 .bottom-section {
-  position: fixed;
+  position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
   color: white;
   bottom: 10px;
-  left: 10px;
+  text-align: center;
 }
 
-.instagram-logo{
+.instagram-logo {
   max-width: 50px;
 }
