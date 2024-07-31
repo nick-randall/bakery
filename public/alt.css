@@ -54,16 +54,16 @@
     min-width: 40%;
   }
   .pretzel-logo {
-    max-width: 170px;
+    max-width: 220px;
   }
   .black-title {
-    font-size: 50px;
+    font-size: 60px;
   }
   .red-title {
-    font-size: 50px;
+    font-size: 60px;
   }
   .yellow-title {
-    font-size: 70px;
+    font-size: 80px;
   }
 }
 
@@ -157,6 +157,13 @@ hr {
 
 .product {
   position: relative;
+  transition: 500ms;
+  cursor: pointer;
+}
+
+.product:hover {
+  transform: scale(1.1);
+  z-index: 1;
 }
 .product .product-info {
   position: absolute;
