@@ -40,12 +40,11 @@ body {
 
 @media screen and (max-width: 800px) {
   .branding {
-    /* visibility: hidden; */
     left: 20px;
     flex-direction: column;
     position: relative;
     padding-bottom: 30px;
-    max-width: 90%;
+    max-width: 200px;
   }
   .pretzel-logo {
     max-width: 100px;

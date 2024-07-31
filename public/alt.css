@@ -1,0 +1,80 @@
+@font-face {
+  font-family: "hey_august";
+  src: url("Hey\ August.ttf");
+}
+@font-face {
+  font-family: "alte_schwabacher";
+  src: url("AlteSchwabacher.ttf");
+}
+
+
+/* Banner */
+.banner {
+  display: flex;
+}
+@media screen and (max-width: 800px) {
+  .banner {
+    flex-direction: column;
+  }
+  .pretzel-logo {
+    max-width: 120px;
+  }
+  .black-title {
+    font-size: 35px;
+  }
+  .red-title {
+    font-size: 35px;
+  }
+  .yellow-title {
+    font-size: 40px;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .banner {
+    flex-direction: row;
+  }
+  .banner-image {
+    max-width: 500px;
+  }
+  .branding{
+    min-width: 350px;
+  }
+  .pretzel-logo {
+    max-width: 170px;
+  }
+  .black-title {
+    font-size: 50px;
+  }
+  .red-title {
+    font-size: 50px;
+  }
+  .yellow-title {
+    font-size: 70px;
+  }
+}
+
+.logo-title {
+  text-align: center;
+}
+.black-title {
+  color: black;
+  font-family: hey_august;
+}
+.red-title {
+  color: #eb4025;
+  font-family: hey_august;
+  text-shadow: 1px 1px 1px black;
+}
+.yellow-title {
+  color: #f9db57;
+  font-family: hey_august;
+}
+
+.branding {
+  text-align: center;
+  padding: 30px;
+  background-color: #f2b13d;
+  /* display: flex; */
+  /* align-items: center; */
+}
