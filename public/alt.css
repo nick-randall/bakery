@@ -3,7 +3,8 @@
 *::before {
   box-sizing: border-box;
   padding: 0;
-  margin: 0;
+}
+html {
   font-family: hey_august;
 }
 
@@ -48,11 +49,13 @@
     margin-right: 40px;
   }
   .banner-image {
-    max-width: 60%;
+    max-width: 50%;
+    height: auto;
   }
   .branding {
-    min-width: 40%;
+    min-width: 50%;
   }
+  /*TODO change below on tablet (tends to squash)*/
   .pretzel-logo {
     max-width: 220px;
   }
@@ -180,4 +183,15 @@ hr {
 
 .product img {
   height: 400px;
+}
+
+/* footer */
+footer {
+  margin-top: 180px;
+  font-style: italic;
+  font-family: "Courier New", Courier;
+  font-size: 12px;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
 }
