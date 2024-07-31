@@ -136,3 +136,27 @@ hr {
 .socials img {
   height: 50px;
 }
+
+/* products */
+.products {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.products-container {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.product {
+}
+
+.product img {
+  height: 400px;
+}
