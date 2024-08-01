@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./public/bakery.css" />
+    <link rel="stylesheet" href="./public/form.css" />
+  </head>
+  <body>
+    <div class="overlay" id="overlay">
+      <div class="form-stuff">
+        <!-- <img class="close-button" id="close-button" src="./public/close.svg" alt="close button" /> -->
+        <a href="./alt.html"><img class="close-button" src="./public/close.svg" alt="close button" /></a>
+
+        <div class="form-branding">
+          <img src="./public/pretzel_white.png" alt="pretzel logo" class="pretzel-logo" />
+          <div class="vertical-spacing"></div>
+          <div><span class="black-title">German </span><span class="red-title">Family</span></div>
+          <span class="yellow-title">Bakery</span>
+        </div>
+        <form name="order-form" id="order-form">
+          <h1>Order form</h1>
+          <p>Pickup at 56 Valley Drive, Caboolture</p>
+          <label for="name">
+            <span>Name</span>
+            <input type="text" name="name" id="name" placeholder=" " autocomplete="off" class="form-control-material" required />
+          </label>
+          <label for="phone">
+            <span>Phone</span>
+            <input type="text" name="phone" id="phone" pattern="[0-9]+" placeholder=" " autocomplete="off" class="form-control-material" required />
+          </label>
+          <label for="date"
+            ><span>Pickup Date</span>
+            <input type="date" name="date" id="pickup_date" placeholder=" " autocomplete="off" class="form-control-material" required />
+          </label>
+          <label for="time"
+            ><span class="select-label">Pickup Time</span>
+            <select
+              type="text"
+              name="time"
+              id="pickup_time"
+              placeholder="morning or evening"
+              autocomplete="off"
+              class="form-control-material"
+              required
+            >
+              <option value="from 7:30am">morning(from 7:30am)</option>
+              <option value="from 5:30pm">evening(from 5:30pm)</option>
+            </select>
+          </label>
+          <h3>Choose your items:</h3>
+          <label for="sourdough">
+            <span class="select-label">Sourdough - 850g loaf ($9):</span>
+            <select name="sourdough" id="sourdough_select"></select>
+          </label>
+          <label for="pretzels">
+            <span class="select-label">Soft pretzels ($3.50):</span>
+            <select name="pretzels" id="pretzels_select"></select>
+          </label>
+          <label for="hefezopf">
+            <span class="select-label">Braided brioche (Hefezopf) ($7):</span>
+            <select name="hefezopf" id="hefezopf_select"></select>
+          </label>
+          <label>
+            <span class="select-label">Current total: </span>
+            <span class="select-label" id="total-price">$0</span>
+          </label>
+          <button type="submit" class="btn btn-primary btn-ghost">Place Order</button>
+        </form>
+      </div>
+      <div class="confirm-dialogue hidden" id="confirm-order">
+        <h3>Your order:</h3>
+        <p id="order-text"></p>
+        <div style="display: flex; gap: 10px">
+          <button id="ok-button" class="btn">OK</button>
+          <button id="cancel-button" class="btn">CANCEL</button>
+        </div>
+      </div>
+      <div class="confirm-dialogue hidden" id="order-result-dialogue">
+        <!-- <h3>Your order:</h3> -->
+        <p id="order-result-text"></p>
+        <div style="display: flex; gap: 10px">
+          <a href="./alt.html" class="btn" id="order-result-link">  OK</a>
+        </div>
+      </div>
+    </div>
+    <script src="./form-logic.js"></script>
+  </body>
+</html>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Form</title>
-    <link rel="stylesheet" href="form.css" />
+    <link rel="stylesheet" href="../form.css" />
   </head>
   <body>
     <form name="order-form" onsubmit="onSubmit(this)">
@@ -18,6 +18,13 @@
       <label for="date"
         ><span>Pickup Date</span>
         <input type="date" name="date" id="pickup_date" placeholder=" " autocomplete="off" class="form-control-material" required />
+      </label>
+      <label for="time"
+        >Pickup Time
+        <select type="text" name="time" id="pickup_time" placeholder="morning or evening" autocomplete="off" class="form-control-material" required>
+          <option value="from 7:30am">morning(from 7:30am)</option>
+          <option value="from 5:30pm">evening(from 5:30pm)</option>
+        </select>
       </label>
 
       <label for="email"
@@ -35,26 +42,21 @@
       </label>
 
       <label for="sourdough"
-        >Sourdough - 850g loaf ($8):
-        <select name="sourdough" id="sourdough_select">
-        </select>
+        >Sourdough - 850g loaf ($9):
+        <select name="sourdough" id="sourdough_select"></select>
       </label>
       <label for="pretzels"
-        >Soft pretzels ($3):
-        <select name="pretzels" id="pretzels_select">
-        </select>
+        >Soft pretzels ($3.50):
+        <select name="pretzels" id="pretzels_select"></select>
       </label>
       <label for="hefezopf"
         >Braided brioche (Hefezopf) ($7):
-        <select name="hefezopf" id="hefezopf_select">
-        </select>
+        <select name="hefezopf" id="hefezopf_select"></select>
       </label>
-      <label>Current total: <label id="total-price">$0</label></label>
+      Current total: <label id="total-price">$0</label>
 
       <button type="submit" class="btn btn-primary btn-ghost">Place Order</button>
     </form>
-    <script src="../form-logic.js">
-     
-    </script>
+    <script src="../form-logic.js"></script>
   </body>
 </html>

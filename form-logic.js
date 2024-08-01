@@ -1,6 +1,9 @@
 const overlay = document.getElementById("overlay");
 const confirmDialogue = document.getElementById("confirm-order");
 const form = document.getElementById("order-form");
+const orderResultDialogue = document.getElementById("order-result-dialogue");
+const orderResultText = document.getElementById("order-result-text");
+const orderResultLink = document.getElementById("order-result-link");
 
 const sourdough = document.getElementById("sourdough_select");
 const pretzels = document.getElementById("pretzels_select");
@@ -8,10 +11,16 @@ const hefezopf = document.getElementById("hefezopf_select");
 
 const date = document.getElementById("pickup_date");
 if (date != null) {
-  const today = new Date().toISOString().split("T")[0];
-  date.value = today;
-  date.min = today;
+  const todaysDate = new Date();
+  const twoDaysInTheFuture = new Date(todaysDate.setDate(todaysDate.getDate() + 2));
+
+  const nextPossibleOrder = twoDaysInTheFuture.toISOString().split("T")[0];
+  date.value = nextPossibleOrder;
+  date.min = nextPossibleOrder;
 }
+
+const getDateString = date => date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
+
 
 const recordVisit = () =>
   fetch("https://resume-backend.fly.dev/add-visit", {
@@ -24,7 +33,7 @@ const recordVisit = () =>
     }),
   }).then(response => console.log(response));
 
-recordVisit();
+// recordVisit();
 
 const getTotalPrice = () => {
   const numSourdough = sourdough.value;
@@ -32,7 +41,16 @@ const getTotalPrice = () => {
   const numHefezopf = hefezopf.value;
 
   const totalPrice = sourdoughPrice * numSourdough + pretzelsPrice * numPretzels + hefezopfPrice * numHefezopf;
+
   return totalPrice;
+};
+
+const asDollarString = num => {
+  const formatter = new Intl.NumberFormat("en-AU", {
+    style: "currency",
+    currency: "AUD",
+  });
+  return formatter.format(num);
 };
 
 const addOptions = (select, min, max) => {
@@ -44,15 +62,16 @@ const addOptions = (select, min, max) => {
   }
 };
 
-const sourdoughPrice = 8;
-const pretzelsPrice = 3;
+const sourdoughPrice = 9;
+const pretzelsPrice = 3.5;
 const hefezopfPrice = 7;
 
 const onSubmit = e => {
   e.preventDefault();
   const name = document.getElementById("name").value;
   const phone = document.getElementById("phone").value;
-  // const pickupDate = document.getElementById("pickup_date").value;
+  const pickupDate = document.getElementById("pickup_date").value;
+  const pickupTime = document.getElementById("pickup_time").value;
   const numSourdough = sourdough.value;
   const numPretzels = pretzels.value;
   const numHefezopf = hefezopf.value;
@@ -67,7 +86,7 @@ const onSubmit = e => {
   if (numHefezopf > 0) {
     text += `${numHefezopf} x hefezopf loaf(s) = $${hefezopfPrice * numHefezopf}\n`;
   }
-  text += `Total price is $${getTotalPrice()}.\nDo you want to proceed?`;
+  text += `Total price is ${asDollarString(getTotalPrice())}.\nDo you want to proceed?`;
   confirmDialogue.classList.remove("hidden");
   const orderText = document.getElementById("order-text");
   orderText.textContent = text;
@@ -89,21 +108,22 @@ const onSubmit = e => {
       name,
       phone,
       items,
-      pickupDate: "4-8-2024",
-      pickupTime: "morning",
+      pickupDate,
+      pickupTime,
       totalPrice: getTotalPrice(),
     });
   });
   cancelButton.addEventListener("click", () => {
     confirmDialogue.classList.add("hidden");
-    overlay.classList.add("hidden");
+    // overlay.classList.add("hidden");
   });
 };
 
 form.addEventListener("submit", onSubmit);
 
 const placeOrder = async ({ name, phone, items, pickupDate, pickupTime, totalPrice }) => {
-  const response = await fetch("https://resume-backend.fly.dev/place-bakery-order", {
+  // const response = await fetch("https://resume-backend.fly.dev/place-bakery-order", {
+  const response = await fetch("http://localhost:5555/place-bakery-order", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -128,11 +148,18 @@ const placeOrder = async ({ name, phone, items, pickupDate, pickupTime, totalPri
 
   if (response.ok) {
     confirmDialogue.classList.add("hidden");
-    overlay.classList.add("hidden");
-    alert("Order placed successfully!");
+    // overlay.classList.add("hidden");
+    orderResultDialogue.classList.remove("hidden");
+    const date = new Date(pickupDate);
+    console.log(date);
+    const dateString = getDateString(date);
+    orderResultText.textContent = `Your order has been placed successfully!\n Pickup on ${dateString} ${pickupTime}\n  at 56 Valley Drive, Caboolture`;
   } else {
     confirmDialogue.classList.add("hidden");
-    alert("There was a problem placing your order! Please try again or send your order via email to thisisjustafowardingaddress[at]gmail.com");
+    orderResultDialogue.classList.remove("hidden");
+    orderResultText.textContent =
+      "There was a problem placing your order!\nPlease try again or send your order via email to thisisjustafowardingaddress[at]gmail.com";
+    orderResultLink.href = "./form.html";
   }
 };
 
@@ -141,12 +168,7 @@ addOptions(pretzels, 0, 10);
 addOptions(hefezopf, 0, 3);
 
 const onSelect = () => {
-  const numSourdough = sourdough.value;
-  const numPretzels = pretzels.value;
-  const numHefezopf = hefezopf.value;
-
-  const totalPrice = sourdoughPrice * numSourdough + pretzelsPrice * numPretzels + hefezopfPrice * numHefezopf;
-  document.getElementById("total-price").textContent = `$${totalPrice}`;
+  document.getElementById("total-price").textContent = asDollarString(getTotalPrice());
 };
 
 sourdough.addEventListener("change", onSelect);
@@ -154,12 +176,13 @@ pretzels.addEventListener("change", onSelect);
 hefezopf.addEventListener("change", onSelect);
 const totalPriceEl = document.getElementById("total-price");
 
-const preOrderButton = document.getElementById("pre-order-button");
-preOrderButton.addEventListener("click", () => {
-  overlay.classList.remove("hidden");
-});
+// const preOrderButton = document.getElementById("pre-order-button");
+// preOrderButton.addEventListener("click", () => {
+//   overlay.classList.remove("hidden");
+// });
 
-const closeButton = document.getElementById("close-button");
-closeButton.addEventListener("click", () => {
-  overlay.classList.add("hidden");
-});
+// const closeButton = document.getElementById("close-button");
+// closeButton.addEventListener("click", () => {
+//   overlay.classList.add("hidden");
+// });
+getTotalPrice();
