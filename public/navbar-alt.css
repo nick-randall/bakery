@@ -107,7 +107,7 @@
 
 /* ......../ media query /.......... */
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .navbar {
     opacity: 0.95;
   }
@@ -216,11 +216,11 @@
     transform: rotate(-35deg);
   }
 
-}
+} */
 
 @media (max-width: 500px) {
   html {
-    font-size: 65%;
+    /* font-size: 65%; */
   }
 
   .navbar .menu-items li{
@@ -229,7 +229,7 @@
 
 
   .navbar .menu-items li {
-    margin-bottom: 2.5rem;
+    /* margin-bottom: 2.5rem; */
     font-size: 1.8rem;
     font-weight: 500;
   }
