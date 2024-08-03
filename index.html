@@ -8,6 +8,30 @@
     <link rel="stylesheet" href="./public/navbar-alt.css" />
   </head>
   <body>
+    <div id="announcement"
+      style="
+        position: fixed;
+        height: 90vh;
+        width: 90vw;
+        top: 5vh;
+        left: 5vw;
+        background-color: grey;
+        border-radius: 6px;
+        box-shadow: 20px 20px 20px;
+        z-index: 99;
+      "
+    >
+    <img style="position: absolute; right: 5%; top: 5%; height: 40px; width: 40px; background-color: blue; border-radius: 6px; cursor: pointer;" id="close-button" src="./public/close.svg" ></img>
+      <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 90px; text-align: center;">
+        *Grand Opening*<br /><span
+          style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: 70px; line-height: 0.8"
+        >
+          4th August <br />
+          6:30am till 12pm<br />
+          56 Valley Drive, Caboolture
+        </span>
+      </div>
+    </div>
     <nav class="navbar">
       <div class="navbar-container">
         <input type="checkbox" name="" id="" />
@@ -74,8 +98,10 @@
     </section>
 
     <footer id="footer">
-      <p>Copyright © German Family Bakery<br/>
-      Valley Drive, Caboolture, Queensland</p>
+      <p>
+        Copyright © German Family Bakery<br />
+        Valley Drive, Caboolture, Queensland
+      </p>
     </footer>
   </body>
   <!-- 
@@ -83,6 +109,12 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script>
+    const announcement = document.getElementById("announcement");
+    const closeButton = document.getElementById("close-button");
+    closeButton.addEventListener("click", () => {
+      announcement.style.display = "none";
+    });
+
     $(document).ready(function () {
       // Add smooth scrolling to all links
       $("a").on("click", function (event) {
