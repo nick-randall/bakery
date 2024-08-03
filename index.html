@@ -21,7 +21,7 @@
         z-index: 98;
       "
     >
-    <img style="position: absolute; right: 5%; top: 5%; height: 40px; width: 40px; background-color: blue; border-radius: 6px; cursor: pointer; z-index: 99;" src="./public/close.svg" ></img>
+    <img style="position: absolute; right: 5%; top: 5%; height: 40px; width: 40px; background-color: blue; border-radius: 6px; cursor: pointer; z-index: 99;" src="./public/close.svg" id="close-button-1"></img>
       <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 90px; text-align: center;">
         *Grand Opening*<br /><span
           style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: 70px; line-height: 0.8"
@@ -110,7 +110,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script>
     const announcement = document.getElementById("announcement");
-    const closeButton = document.getElementById("close-button");
+    const closeButton = document.getElementById("close-button-1");
     closeButton.addEventListener("click", () => {
       announcement.style.display = "none";
     });
