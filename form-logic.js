@@ -122,8 +122,8 @@ const onSubmit = e => {
 form.addEventListener("submit", onSubmit);
 
 const placeOrder = async ({ name, phone, items, pickupDate, pickupTime, totalPrice }) => {
-  // const response = await fetch("https://resume-backend.fly.dev/place-bakery-order", {
-  const response = await fetch("http://localhost:5555/place-bakery-order", {
+  const response = await fetch("https://resume-backend.fly.dev/place-bakery-order", {
+  // const response = await fetch("http://localhost:5555/place-bakery-order", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
