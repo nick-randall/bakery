@@ -11,7 +11,8 @@ const hefezopf = document.getElementById("hefezopf_select");
 
 const date = document.getElementById("pickup_date");
 if (date != null) {
-  const todaysDate = new Date();
+  const todaysDate = new Date(new Date().toISOString());
+  console.log(`todaysDate: ${todaysDate}`);
   const twoDaysInTheFuture = new Date(todaysDate.setDate(todaysDate.getDate() + 2));
 
   const nextPossibleOrder = twoDaysInTheFuture.toISOString().split("T")[0];
@@ -20,7 +21,7 @@ if (date != null) {
 }
 
 const getDateString = date => date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
-
+const getTimeString = date => date.getHours() + ":" + date.getMinutes();
 
 const recordVisit = () =>
   fetch("https://resume-backend.fly.dev/add-visit", {
@@ -75,6 +76,11 @@ const onSubmit = e => {
   const numSourdough = sourdough.value;
   const numPretzels = pretzels.value;
   const numHefezopf = hefezopf.value;
+  console.log(`pickupDate ${pickupDate}`);
+  console.log(`pickupTime ${pickupTime}`);
+  const dateTime = new Date(pickupDate + "T" + pickupTime);
+  console.log(`dateTime ${dateTime}`);
+  console.log(`UTC: ${dateTime.toISOString()}`);
 
   let text = "";
   if (numSourdough > 0) {
@@ -104,12 +110,15 @@ const onSubmit = e => {
       items.push({ name: "hefezopf", quantity: numHefezopf, price: hefezopfPrice });
     }
 
+    console.log(pickupDate);
+    const pickupDateTime = new Date(pickupDate + "T" + pickupTime).toISOString();
+
     placeOrder({
       name,
       phone,
       items,
-      pickupDate,
-      pickupTime,
+      pickupDateTime,
+      // pickupTime,
       totalPrice: getTotalPrice(),
     });
   });
@@ -121,8 +130,9 @@ const onSubmit = e => {
 
 form.addEventListener("submit", onSubmit);
 
-const placeOrder = async ({ name, phone, items, pickupDate, pickupTime, totalPrice }) => {
-  const response = await fetch("https://resume-backend.fly.dev/place-bakery-order", {
+const placeOrder = async ({ name, phone, items, pickupDateTime, totalPrice }) => {
+    const response = await fetch("https://backend-nameless-sun-9083.fly.dev/place-bakery-order", {
+  // const response = await fetch("https://resume-backend.fly.dev/place-bakery-order", {
   // const response = await fetch("http://localhost:5555/place-bakery-order", {
     method: "POST",
     headers: {
@@ -132,8 +142,7 @@ const placeOrder = async ({ name, phone, items, pickupDate, pickupTime, totalPri
       name,
       phone,
       order: { items, totalPrice },
-      pickupDate,
-      pickupTime: "morning",
+      pickupDateTime,
       totalPrice,
     }),
   });
@@ -141,8 +150,7 @@ const placeOrder = async ({ name, phone, items, pickupDate, pickupTime, totalPri
     name,
     phone,
     order: { items, totalPrice },
-    pickupDate,
-    pickupTime,
+    pickupDateTime,
     totalPrice,
   });
 
@@ -150,10 +158,11 @@ const placeOrder = async ({ name, phone, items, pickupDate, pickupTime, totalPri
     confirmDialogue.classList.add("hidden");
     // overlay.classList.add("hidden");
     orderResultDialogue.classList.remove("hidden");
-    const date = new Date(pickupDate);
+    const date = new Date(pickupDateTime);
     console.log(date);
     const dateString = getDateString(date);
-    orderResultText.textContent = `Your order has been placed successfully!\n Pickup on ${dateString} ${pickupTime}\n  at 56 Valley Drive, Caboolture`;
+    const timeString = getTimeString(date); 
+    orderResultText.textContent = `Your order has been placed successfully!\n Pickup on ${dateString} from ${timeString}\n  at 56 Valley Drive, Caboolture`;
   } else {
     confirmDialogue.classList.add("hidden");
     orderResultDialogue.classList.remove("hidden");
