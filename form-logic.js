@@ -25,7 +25,7 @@ const getTimeString = date => date.getHours() + ":" + date.getMinutes();
 
 const recordVisit = () =>
   fetch("https://backend-nameless-sun-9083.fly.dev/add-visit", {
-    // fetch("http://localhost:5555/add-visit", {
+  // fetch("http://localhost:5555/add-visit", {
 
     method: "POST",
     headers: {
