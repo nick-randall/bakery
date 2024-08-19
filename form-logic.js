@@ -24,7 +24,9 @@ const getDateString = date => date.getDate() + "-" + (date.getMonth() + 1) + "-"
 const getTimeString = date => date.getHours() + ":" + date.getMinutes();
 
 const recordVisit = () =>
-  fetch("https://resume-backend.fly.dev/add-visit", {
+  fetch("https://backend-nameless-sun-9083.fly.dev/add-visit", {
+    // fetch("http://localhost:5555/add-visit", {
+
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -34,7 +36,7 @@ const recordVisit = () =>
     }),
   }).then(response => console.log(response));
 
-// recordVisit();
+recordVisit();
 
 const getTotalPrice = () => {
   const numSourdough = sourdough.value;
@@ -131,9 +133,9 @@ const onSubmit = e => {
 form.addEventListener("submit", onSubmit);
 
 const placeOrder = async ({ name, phone, items, pickupDateTime, totalPrice }) => {
-    const response = await fetch("https://backend-nameless-sun-9083.fly.dev/place-bakery-order", {
-  // const response = await fetch("https://resume-backend.fly.dev/place-bakery-order", {
-  // const response = await fetch("http://localhost:5555/place-bakery-order", {
+  const response = await fetch("https://backend-nameless-sun-9083.fly.dev/place-bakery-order", {
+    // const response = await fetch("https://resume-backend.fly.dev/place-bakery-order", {
+    // const response = await fetch("http://localhost:5555/place-bakery-order", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -161,7 +163,7 @@ const placeOrder = async ({ name, phone, items, pickupDateTime, totalPrice }) =>
     const date = new Date(pickupDateTime);
     console.log(date);
     const dateString = getDateString(date);
-    const timeString = getTimeString(date); 
+    const timeString = getTimeString(date);
     orderResultText.textContent = `Your order has been placed successfully!\n Pickup on ${dateString} from ${timeString}\n  at 56 Valley Drive, Caboolture`;
   } else {
     confirmDialogue.classList.add("hidden");
