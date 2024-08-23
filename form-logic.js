@@ -24,7 +24,7 @@ const getDateString = date => date.getDate() + "-" + (date.getMonth() + 1) + "-"
 const getTimeString = date => date.getHours() + ":" + date.getMinutes();
 
 const recordVisit = () =>
-  fetch("https://backend-nameless-sun-9083.fly.dev/add-visit", {
+  fetch("https://backend-rough-firefly-987.fly.dev/add-visit", {
   // fetch("http://localhost:5555/add-visit", {
 
     method: "POST",
@@ -133,7 +133,7 @@ const onSubmit = e => {
 form.addEventListener("submit", onSubmit);
 
 const placeOrder = async ({ name, phone, items, pickupDateTime, totalPrice }) => {
-  const response = await fetch("https://backend-nameless-sun-9083.fly.dev/place-bakery-order", {
+  const response = await fetch("https://backend-rough-firefly-987.fly.dev/place-bakery-order", {
     // const response = await fetch("https://resume-backend.fly.dev/place-bakery-order", {
     // const response = await fetch("http://localhost:5555/place-bakery-order", {
     method: "POST",
