@@ -9,6 +9,7 @@ const sourdough = document.getElementById("sourdough_select");
 const pretzels = document.getElementById("pretzels_select");
 const hefezopf = document.getElementById("hefezopf_select");
 
+
 const date = document.getElementById("pickup_date");
 if (date != null) {
   const todaysDate = new Date(new Date().toISOString());
@@ -18,6 +19,7 @@ if (date != null) {
   const nextPossibleOrder = twoDaysInTheFuture.toISOString().split("T")[0];
   date.value = nextPossibleOrder;
   date.min = nextPossibleOrder;
+  date.max = "2024-09-22";
 }
 
 const getDateString = date => date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();

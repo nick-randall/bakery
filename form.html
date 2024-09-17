@@ -25,15 +25,15 @@
           <p>Pickup at 56 Valley Drive, Caboolture</p>
           <label for="name">
             <span>Name</span>
-            <input type="text" name="name" id="name" placeholder=" " autocomplete="off" class="form-control-material" required />
+            <input type="text" name="name" id="name" placeholder=" " autocomplete="off" required />
           </label>
           <label for="phone">
             <span>Phone</span>
-            <input type="text" name="phone" id="phone" pattern="[0-9]+" placeholder=" " autocomplete="off" class="form-control-material" required />
+            <input type="text" name="phone" id="phone" pattern="[0-9]+" placeholder=" " autocomplete="off" required />
           </label>
           <label for="date"
             ><span>Pickup Date</span>
-            <input type="date" name="date" id="pickup_date" placeholder=" " autocomplete="off" class="form-control-material" required />
+            <input class="date-picker" type="date" name="date" id="pickup_date" placeholder=" " autocomplete="off" required />
           </label>
           <label for="time"
             ><span class="select-label">Pickup Time</span>
@@ -43,7 +43,7 @@
               id="pickup_time"
               placeholder="morning or evening"
               autocomplete="off"
-              class="form-control-material"
+            
               required
             >
               <option value="07:30">morning(from 7:30am)</option>
