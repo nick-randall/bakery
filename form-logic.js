@@ -19,7 +19,7 @@ if (date != null) {
   const nextPossibleOrder = twoDaysInTheFuture.toISOString().split("T")[0];
   date.value = nextPossibleOrder;
   date.min = nextPossibleOrder;
-  date.max = "2024-09-22";
+  // date.max = "2024-09-22";
 }
 
 const getDateString = date => date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
